@@ -1,5 +1,5 @@
-import { metrics } from "../metrics"
-import { workers } from "../worker"
+import { metrics } from "../metrics.js"
+import { workers } from "../worker.js"
 
 export const metricsController=(req,res)=>{
     res.type("text/plain").send(`

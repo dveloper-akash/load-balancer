@@ -5,9 +5,9 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "worker1": "PORT=3000 node worker-service/worker-server.js",
-    "worker2": "PORT=3001 node worker-service/worker-server.js",
-    "worker3": "PORT=3002 node worker-service/worker-server.js"
+    "worker1": "cross-env PORT=3000 node worker-service/worker-server.js",
+    "worker2": "cross-env PORT=3001 node worker-service/worker-server.js",
+    "worker3": "cross-env PORT=3002 node worker-service/worker-server.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "homepage": "https://github.com/dveloper-akash/load-balancer#readme",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
   }
 }

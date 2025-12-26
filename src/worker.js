@@ -1,7 +1,7 @@
 export const workers=[
-    {host:"localhost",port:3000,alive:true},
-    {host:"localhost",port:3001,alive:true},
-    {host:"localhost",port:3002,alive:true}
+    {host:"127.0.0.1",port:3000,alive:true},
+    {host:"127.0.0.1",port:3001,alive:true},
+    {host:"127.0.0.1",port:3002,alive:true}
 ]
 
 // Round-Robin
@@ -12,7 +12,7 @@ export const nextAliveWorker=()=>{
     const aliveWorkers=workers.filter(w=>w.alive);
     if(aliveWorkers.length === 0) return null;
 
-    const worker=workers[currentIndex%aliveWorkers.length];
+    const worker=aliveWorkers[currentIndex%aliveWorkers.length];
     currentIndex++;
     return worker;
 }

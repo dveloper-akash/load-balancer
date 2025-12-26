@@ -1,5 +1,5 @@
-import { metrics } from "./metrics"
-import { nextAliveWorker } from "./worker";
+import { metrics } from "./metrics.js"
+import { nextAliveWorker } from "./worker.js";
 import http from 'http';
 
 export const proxyRequest=(req,res)=>{
@@ -30,7 +30,6 @@ export const proxyRequest=(req,res)=>{
         proxyRes.pipe(res);
     })
     proxyReq.on("error",()=>{
-        worker.alive=false;
         metrics.failedRequests++;
         res.status(502).send("Bad Gateway")
     })

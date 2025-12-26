@@ -7,14 +7,17 @@ export const startHealthChecks=(workers,interval=5000)=>{
                 {
                     host:worker.host,
                     port:worker.port,
+                    family:4,
+                    path:"/health",
                     timeout:2000
                 },
-                ()=>{
-                    worker.alive=true;
+                (res)=>{
+                    res.resume(); 
+                    worker.alive = res.statusCode === 200;
                 }
             )
 
-            req.on("error",()=>{
+            req.on("error",(err)=>{
                 worker.alive=false
             })
 
