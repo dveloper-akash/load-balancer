@@ -4,9 +4,10 @@
   "description": "load balancer implemented with round robins algorithm",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "worker1": "PORT=3000 node worker-service/worker-server.js",
+    "worker2": "PORT=3001 node worker-service/worker-server.js",
+    "worker3": "PORT=3002 node worker-service/worker-server.js"
   },
   "repository": {
     "type": "git",
