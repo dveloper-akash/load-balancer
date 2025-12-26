@@ -29,9 +29,10 @@ load-balancer/
 │ ├── workers.js # Worker registry and round-robin logic
 │ ├── health.js # Periodic health check logic
 │ ├── proxy.js # Request proxying logic
+│ ├── metrics.js # Metrics tracking
 │ │
 │ └── controllers/
-│ └── metricsController.js # Metrics collection and /metrics endpoint
+│ └── metricsController.js # Metrics collection 
 │
 ├── worker-service/
 │ └── worker-server.js # Backend worker server
