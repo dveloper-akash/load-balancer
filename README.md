@@ -21,19 +21,24 @@ The purpose of this project is to understand how load balancers work internally,
 
 ## Project Structure
 
+```pgsql
 load-balancer/
 │
 ├── src/
 │ ├── server.js # Load balancer entry point
 │ ├── workers.js # Worker registry and round-robin logic
-│ ├── health.js # Health check implementation
-│ └── metrics.js # Metrics tracking and /metrics endpoint
+│ ├── health.js # Periodic health check logic
+│ ├── proxy.js # Request proxying logic
+│ │
+│ └── controllers/
+│ └── metricsController.js # Metrics collection and /metrics endpoint
 │
 ├── worker-service/
 │ └── worker-server.js # Backend worker server
 │
 ├── package.json
 └── README.md
+```
 
 ---
 
@@ -45,9 +50,11 @@ load-balancer/
 4. The worker processes the request and sends a response.
 5. The load balancer streams the response back to the client.
 
-Health checks run independently at a fixed interval.  
-Only health checks determine whether a worker is alive.  
-Individual request failures do not affect worker health.
+Separately:
+
+- Health checks run independently at a fixed interval.  
+- Only health checks determine whether a worker is alive.  
+- Individual request failures do not affect worker health.
 
 ---
 
