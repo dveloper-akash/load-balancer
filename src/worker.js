@@ -1,7 +1,7 @@
 export const workers=[
-    {host:"127.0.0.1",port:3000,alive:true},
-    {host:"127.0.0.1",port:3001,alive:true},
-    {host:"127.0.0.1",port:3002,alive:true}
+    {host:"127.0.0.1",port:3000,alive:true,failureCount:0},
+    {host:"127.0.0.1",port:3001,alive:true,failureCount:0},
+    {host:"127.0.0.1",port:3002,alive:true,failureCount:0}
 ]
 
 // Round-Robin

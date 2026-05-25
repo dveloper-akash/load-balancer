@@ -31,7 +31,17 @@ export const proxyRequest=(req,res)=>{
     })
     proxyReq.on("error",()=>{
         metrics.failedRequests++;
-        res.status(502).send("Bad Gateway")
+        worker.failureCount++;
+        console.log(`[FAILURE] Worker ${worker.port} failed. Count=${worker.failureCount}`)
+
+        if(worker.failureCount >=3){
+            worker.alive=false;
+            console.log(`[UNHEALTHY] Worker ${worker.port} marked unhealthy`);
+        }
+        if(!res.headersSent){
+            res.status(502).send("Bad Gateway");
+        }
+        
     })
 
     req.pipe(proxyReq)
